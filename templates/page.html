@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+
+{% block container %}
+<div class="pt-16 lg:pt-20">
+  <div class="border-b border-grey-lighter pb-8 sm:pb-12">
+    {% if page.extra.hidden %}
+    <span class="badge badge-warning mb-4">
+      <i class="fa-solid fa-lock"></i> Hidden Page
+    </span>
+    {% endif %}
+    <span class="badge badge-accent mb-4">
+      {{ page.extra.category | last }}
+    </span>
+
+    <h2 class="block font-body text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
+      {{ page.title }}
+    </h2>
+    <div class="flex items-center pt-5 sm:pt-8">
+      <p class="pr-2 font-body font-light">
+	{{ page.date }}
+      </p>
+      <span class="font-body text-grey">//</span>
+      <p class="px-2 font-body font-light">
+	{% for author in page.authors %} {{ author }} {% endfor %}
+      </p>
+      <span class="font-body text-grey">//</span>
+      <p class="pl-2 font-body font-light">
+	{{ page.reading_time }} min read
+      </p>
+    </div>
+  </div>
+
+  <div class="prose max-w-5xl mx-auto py-8 sm:py-12">
+    {{ page.content | safe }}
+  </div>
+
+  {% if not page.extra.hidden %}
+  <div class="flex items-center py-10">
+    <span class="pr-5 font-body font-medium">Share</span>
+    <a href="/">
+      <i class="fa-brands fa-facebook text-2xl transition-colors hover:text-secondary"></i>
+    </a>
+    <a href="/">
+      <i class="fa-brands fa-x-twitter pl-2 text-2xl transition-colors hover:text-secondary"></i>
+    </a>
+    <a href="/">
+      <i class="fa-brands fa-linkedin pl-2 text-2xl transition-colors hover:text-secondary"></i>
+    </a>
+    <a href="/">
+      <i class="fa-brands fa-reddit pl-2 text-2xl transition-colors hover:text-secondary"></i>
+    </a>
+  </div>
+  {% endif %}
+</div>
+{% endblock container %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block container %}
+<div class="pt-8 pb-16 lg:pb-20">
+  {% if section.extra.hidden %}
+  <span class="badge badge-warning mb-4">
+    <i class="fa-solid fa-lock"></i> Hidden Section
+  </span>
+  {% endif %}
+
+  <h1 class="pt-5 font-body text-4xl font-semibold md:text-5xl lg:text-6xl">
+    <i class="{{ section.extra.icon }} pr-3"></i> {{ section.title }}
+  </h1>
+
+  <div class="pt-3 sm:w-3/4 mb-8">
+    <p class="font-body text-xl font-light">
+      {{ section.description }}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    {% for subsection in section.subsections %}
+    {% set subsection = get_section(path=subsection) %}
+    <div
+      class="card bg-base-200 cursor-pointer transition-colors hover:bg-primary hover:text-primary-content shadow-xl active:bg-secondary"
+      @click="sendUserTo('{{ subsection.path }}')">
+      <div class="card-body">
+	<h2 class="card-title">
+	  <i class="{{ subsection.extra.icon }} text-4xl pr-2"></i> {{ subsection.title }}
+	</h2>
+	<div>
+	  <p>{{ subsection.description }}</p>
+	</div>
+	<div class="flex items-center pt-4 w-fit">
+	  <p class="pr-2 font-body font-light">
+	    {{ subsection.pages | length }} Articles inside
+	  </p>
+	</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock container %}

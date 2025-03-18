@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <title>{% block title %}{% endblock title %} | The NexxonTech Hub</title>
+
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+
+    <!-- Fonts -->
+    <link crossorigin="crossorigin" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="preload" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css">
+
+    <!-- TailwindCSS & DaisyUI -->
+    <link rel="stylesheet" href="/assets/styles/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.1/daisyui.min.css">
+
+    <!-- AlpineJS -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js" defer></script>
+    {% endblock head %}
+  </head>
+
+  <body x-data="global" x-init="themeInit()" :class="isMobileMenuOpen ? 'max-h-screen overflow-hidden relative' : ''">
+    <div id="main" class="w-full min-h-screen flex flex-col p-4 md:p-0">
+      {% block navbar %}
+      {% include "common/navbar.html" %}
+      {% endblock navbar %}
+
+      <div class="flex-1 container mx-auto">
+	{% block container %}
+	{% endblock container %}
+      </div>
+
+      {% block footer %}
+      {% include "common/footer.html" %}
+      {% endblock footer %}
+    </div>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block container %}
+<div class="pt-8 pb-16 lg:pb-20">
+  {% if section.extra.hidden %}
+  <span class="badge badge-warning mb-4">
+    <i class="fa-solid fa-lock"></i> Hidden Section
+  </span>
+  {% endif %}
+
+  <h1 class="pt-5 font-body text-4xl font-semibold md:text-5xl lg:text-6xl">
+    <i class="{{ section.extra.icon }} text-5xl"></i>
+    {{ section.title }}
+  </h1>
+
+  <div class="pt-3 sm:w-3/4 mb-8">
+    <p class="font-body text-xl font-light">
+      {{ section.description }}
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-5">
+    {% for page in section.pages %}
+    <div
+      class="card bg-base-200 cursor-pointer transition-colors hover:bg-primary hover:text-primary-content shadow-xl active:bg-secondary"
+      @click="sendUserTo('{{ page.path }}')">
+      <div class="card-body">
+	<div class="flex gap-1 mb-4">
+	  {% if page.extra.hidden %}
+	  <span class="badge badge-warning">
+	    <i class="fa-solid fa-lock"></i> Hidden Page
+	  </span>
+	  {% endif %}
+	  <span class="badge badge-accent">
+	    {{ page.extra.category | last }}
+	  </span>
+	</div>
+	<h2 class="card-title">
+	  {{ page.title }}
+	</h2>
+	<p>{{ page.description }}</p>
+	<div class="flex items-center pt-4 w-fit">
+	  <p class="pr-2 font-body font-light">
+	    {{ page.date }}
+	  </p>
+	  <span class="font-body text-grey">//</span>
+	  <p class="px-2 font-body font-light">
+	    {% for author in page.authors %} {{ author }} {% endfor %}
+	  </p>
+	  <span class="font-body text-grey">//</span>
+	  <p class="pl-2 font-body font-light">
+	    {{ page.reading_time }} min read
+	  </p>
+	</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!--
+  <div class="flex pt-8 lg:pt-16">
+    <span class="cursor-pointer border-2 border-accent px-3 py-1 font-body font-medium text-accent">1</span>
+    <span class="ml-3 cursor-pointer border-2 border-primary px-3 py-1 font-body font-medium text-primary transition-colors hover:border-secondary hover:text-secondary dark:border-green-light dark:text-white dark:hover:border-secondary dark:hover:text-secondary">2</span>
+  </div>
+  -->
+</div>
+{% endblock container %}

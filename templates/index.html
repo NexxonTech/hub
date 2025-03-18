@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block container %}
+<!-- Hero -->
+<div class="border-b border-grey-lighter pt-8 pb-16 lg:pb-20">
+  <h1 class="pt-3 font-body text-4xl font-semibold md:text-5xl lg:text-6xl">
+    The NexxonTech Hub
+  </h1>
+  <p class="pt-3 font-body text-xl font-light">
+    Articles, guides, lectures. Published by NexxonTech.
+  </p>
+</div>
+
+<!-- Public articles -->
+<div class="py-16 lg:py-20">
+  <div class="flex items-center pb-6">
+    <i class="fa-solid fa-book"></i>
+    <h3 class="ml-3 font-body text-2xl font-semibold">
+      Public Articles
+    </h3>
+    <!--
+    <a href="blog.html" class="flex items-center pl-10 font-body italic transition-colors hover:text-primary">
+      All posts
+      <i class="fa-solid fa-chevron-right pl-2"></i>
+    </a>
+    -->
+  </div>
+  <div role="alert" class="alert">
+    <i class="fa-solid fa-face-meh text-2xl"></i>
+    <span>Nothing to see here. For now.</span>
+  </div>
+</div>
+{% endblock container %}

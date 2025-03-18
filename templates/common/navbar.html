@@ -1,0 +1,48 @@
+<!-- Navbar -->
+<div class="container mx-auto">
+  <div class="flex items-center justify-between py-6 lg:py-10">
+    <a href="/" class="flex items-center">
+      <span href="/" class="mr-2">
+	<img src="/assets/img/logo.png" class="h-20" alt="logo" />
+      </span>
+      <p class="hidden font-body text-2xl font-bold lg:block">
+	The NexxonTech Hub
+      </p>
+    </a>
+    <div class="flex items-center lg:hidden">
+      <i class="mr-8 cursor-pointer text-3xl" @click="themeSwitch()" :class="isDarkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon'"></i>
+      <i class="fa-solid fa-bars mr-8 cursor-pointer text-3xl" @click="isMobileMenuOpen = true"></i>
+    </div>
+    <div class="hidden lg:block">
+      <ul class="flex gap-x-8">
+	{% block stditems %}
+	<li class="flex items-center">
+	  <a href="/" class="text-lg font-medium transition-colors hover:text-primary">
+	    Home
+	  </a>
+	</li>
+	{% endblock stditems %}
+	<li>
+	  <i class="cursor-pointer text-3xl transition-colors hover:text-primary" @click="themeSwitch()" :class="isDarkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon'"></i>
+	</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile menu -->
+<div class="pointer-events-none fixed inset-0 z-50 flex bg-black bg-opacity-80 opacity-0 transition-opacity lg:hidden"
+     :class="isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : ''">
+  <div class="ml-auto w-2/3 bg-green p-4 md:w-1/2">
+    <i class="fa-solid fa-x absolute top-0 right-0 mt-4 mr-4 text-4xl text-white" @click="isMobileMenuOpen = false"></i>
+    <ul class="mt-8 flex flex-col">
+      {% block mobileitems %}
+      <li>
+	<a href="/" class="mb-3 block px-2 font-body text-lg font-medium text-white">
+	  Home
+	</a>
+      </li>
+      {% endblock mobileitems %}
+    </ul>
+  </div>
+</div>
