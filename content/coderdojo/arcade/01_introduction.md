@@ -7,7 +7,6 @@ weight = 1
 
 [extra]
 category = [ "Arcade Library" ]
-hidden = true
 +++
 
 👾 **Benvenuti nel mondo dei videogiochi con Python e Arcade!** 🎮🐍

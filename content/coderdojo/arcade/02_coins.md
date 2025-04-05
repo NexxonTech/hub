@@ -7,7 +7,6 @@ weight = 2
 
 [extra]
 category = [ "Arcade Library" ]
-hidden = true
 +++
 
 Ora è il momento di aggiungere la primissima logica al nostro gioco, scrivendo il codice necessario a far "raccogliere" le monete al giocatore.

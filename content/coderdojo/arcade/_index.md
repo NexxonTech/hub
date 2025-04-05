@@ -6,5 +6,4 @@ sort_by = "weight"
 
 [extra]
 icon = "fa-solid fa-gamepad"
-hidden = true
 +++
